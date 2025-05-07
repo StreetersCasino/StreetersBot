@@ -1,8 +1,14 @@
+# bot/handlers/leaderboard.py
+
 from telegram import Update
 from telegram.ext import ContextTypes
-from bot.database import get_top_users
 
-async def show_leaderboard(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    top = get_top_users()
-    leaderboard = "\n".join([f"{u[0]}: {u[1]} coins" for u in top])
-    await update.message.reply_text("🏆 Leaderboard:\n" + leaderboard)
+async def leaderboard_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # Temporary static leaderboard
+    leaderboard_text = (
+        "🏆 Leaderboard:\n"
+        "1. Alice - 150 coins\n"
+        "2. Bob - 120 coins\n"
+        "3. Charlie - 100 coins"
+    )
+    await update.message.reply_text(leaderboard_text)
